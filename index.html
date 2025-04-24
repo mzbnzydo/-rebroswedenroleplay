@@ -17,10 +17,11 @@
             margin: 0;
             padding: 0;
             animation: fadeIn 1.5s ease-out;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
-            color: #000;
+            color: #fff;
         }
 
         /* Navbar */
@@ -60,6 +61,7 @@
         nav .menu a:hover {
             background-color: #007bff;
             border-radius: 5px;
+            transform: scale(1.1);
         }
 
         /* Header Section */
@@ -78,19 +80,16 @@
             color: #fff;
             position: relative;
             z-index: 2;
-            animation: flashLightning 1s infinite alternate;
+            animation: flashingText 1s ease-in-out infinite alternate;
         }
 
-        /* Flashing Lightning Effect */
-        @keyframes flashLightning {
+        /* Flashing Effect for Header */
+        @keyframes flashingText {
             0% {
                 text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
             }
-            50% {
-                text-shadow: 0 0 30px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
-            }
             100% {
-                text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+                text-shadow: 0 0 30px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
             }
         }
 
@@ -98,6 +97,8 @@
         #join-reasons {
             padding: 80px 20px;
             text-align: center;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.7), rgba(0, 0, 0, 0.7));
+            color: #fff;
         }
 
         #join-reasons h2 {
@@ -135,26 +136,26 @@
             width: 60px;
             height: 60px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
 
         .box h3 {
             font-size: 1.8rem;
-            color: #fff;
             margin-bottom: 20px;
         }
 
         .box p {
             font-size: 1rem;
-            color: #ccc;
         }
 
-        /* Apply Form Section */
+        /* Form Section */
         #apply-form {
             background-color: #f9f9f9;
             padding: 50px 20px;
             margin-top: 50px;
             border-radius: 10px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         #apply-form h2 {
@@ -202,6 +203,12 @@
 
         .form-group button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Gradient Effect for Background */
+        .gradient-background {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.6), rgba(0, 0, 0, 0.6));
         }
 
         /* DMCA Badge */
@@ -218,8 +225,6 @@
             color: white;
             padding: 20px;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
         footer p {
@@ -230,6 +235,11 @@
         footer a {
             color: #007bff;
             text-decoration: none;
+        }
+
+        /* Smooth Scroll for Navigation Links */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Discord Button */
@@ -244,21 +254,69 @@
 
         .discord-btn:hover {
             background-color: #5b6eae;
+            transform: scale(1.1);
         }
 
+        /* Hover Effect for Cards */
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Fancy Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            color: #aaa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: black;
+        }
+
+        .modal .modal-body {
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navbar -->
     <nav>
-        <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
+        <img class="logo" src="https://www.example.com/logo.png" alt="Logo">
         <div class="menu">
             <a href="#">Hem</a>
             <a href="#join-reasons">Varför Joina?</a>
-            <a href="#apply-form">Ansök här</a>
-            <a href="#">Villkor</a>
-            <a href="https://discord.gg/YOUR_DISCORD_LINK" class="discord-btn">Gå med på Discord</a>
+            <a href="#apply-form">Ansök</a>
+            <a href="#" class="discord-btn">Discord</a>
         </div>
     </nav>
 
@@ -268,18 +326,72 @@
     </header>
 
     <!-- Join Reasons Section -->
-    <section id="join-reasons">
-        <h2>Varför Joina Örebro Sweden Roleplay?</h2>
+    <section id="join-reasons" class="gradient-background">
+        <h2>Varför Joina?</h2>
         <div class="box-container">
             <div class="box">
-                <img src="https://via.placeholder.com/60" alt="Icon 1" class="box-icon">
-                <h3>Realistiskt Rollspel</h3>
-                <p>Upplev svensk stadsmiljö med realistiska karaktärer och interaktioner. Bygg din egen historia i ett välkomnande samhälle.</p>
+                <div class="box-icon"><i class="fas fa-car"></i></div>
+                <h3>Fordon och Aktiviteter</h3>
+                <p>Välj mellan massor av fordon och aktiviteter som gör spelet ännu roligare.</p>
             </div>
             <div class="box">
-                <img src="https://via.placeholder.com/60" alt="Icon 2" class="box-icon">
-                <h3>Stark Gemenskap</h3>
-                <p>Vår community är vänlig och hjälpsam, med en stark känsla av samhörighet. Vi har aktiva spelare som alltid är redo att spela.</p>
+                <div class="box-icon"><i class="fas fa-users"></i></div>
+                <h3>Gemenskap</h3>
+                <p>Var en del av vår aktiva och vänliga community där alla hjälper varandra.</p>
             </div>
             <div class="box">
-                <img src="https://via.placeholder.com/60" alt
+                <div class="box-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Mycket Innehåll</h3>
+                <p>Vi erbjuder ett stort urval av fordon, jobb och aktiviteter för att hålla spelet intressant och roligt för alla spelare.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Form Section -->
+    <section id="apply-form">
+        <h2>Ansök till Örebro Sweden RP</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="application-type">Välj Ansökan</label>
+                <select id="application-type" name="application-type" required>
+                    <option value="chef">Chef Ansökan</option>
+                    <option value="whitelist">Whitelist Ansökan</option>
+                    <option value="staff">Staff Ansökan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Namn</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Ålder</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Erfarenhet av RP</label>
+                <textarea id="experience" name="experience" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="why-join">Varför vill du joina Örebro Sweden RP?</label>
+                <textarea id="why-join" name="why-join" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Skicka Ansökan</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- DMCA Badge -->
+    <div class="dmca-badge">
+        <a href="//www.dmca.com/Protection/Status.aspx?ID=045c7e23-6f36-486c-834d-1babb10f26e8" title="DMCA Protection Status">
+            <img src="https://images.dmca.com/Badges/DMCA_logo-bw200w.png" alt="DMCA Protection">
+        </a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Örebro Sweden Roleplay. Alla rättigheter förbehållna. <a href="#">Villkor</a></p>
+    </footer>
+
+</body>
+</html>
