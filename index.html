@@ -76,26 +76,22 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             color: #fff;
-            animation: fadeIn 2s ease-out;
             position: relative;
             z-index: 2;
+            animation: flashLightning 1s infinite alternate;
         }
 
-        /* Lightning Effect around Header Text */
-        @keyframes lightningAroundText {
+        /* Flashing Lightning Effect */
+        @keyframes flashLightning {
             0% {
-                text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
+                text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
             }
             50% {
-                text-shadow: 0 0 30px blue, 0 0 40px blue, 0 0 60px blue;
+                text-shadow: 0 0 30px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
             }
             100% {
-                text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
+                text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
             }
-        }
-
-        header h1 {
-            animation: lightningAroundText 1.5s infinite alternate;
         }
 
         /* Join Reasons Section */
@@ -152,19 +148,19 @@
             color: #ccc;
         }
 
-        /* Contact/Apply Form Section */
+        /* Apply Form Section */
         #apply-form {
             background-color: #f9f9f9;
             padding: 50px 20px;
             margin-top: 50px;
             border-radius: 10px;
+            text-align: center;
         }
 
         #apply-form h2 {
-            text-align: center;
             font-size: 2.5rem;
             color: #007bff;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -180,6 +176,7 @@
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 15px;
@@ -267,17 +264,17 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Örebro Sweden RP</h1>
+        <h1>Välkommen till Örebro Sweden Roleplay</h1>
     </header>
 
     <!-- Join Reasons Section -->
     <section id="join-reasons">
-        <h2>Varför Joina Örebro RP?</h2>
+        <h2>Varför Joina Örebro Sweden Roleplay?</h2>
         <div class="box-container">
             <div class="box">
                 <img src="https://via.placeholder.com/60" alt="Icon 1" class="box-icon">
                 <h3>Realistiskt Rollspel</h3>
-                <p>Upplev vår server, med flera jobb som söker efter anställda och ibland även chefer. Titta in vår Discord för mer information.</p>
+                <p>Upplev svensk stadsmiljö med realistiska karaktärer och interaktioner. Bygg din egen historia i ett välkomnande samhälle.</p>
             </div>
             <div class="box">
                 <img src="https://via.placeholder.com/60" alt="Icon 2" class="box-icon">
@@ -285,50 +282,4 @@
                 <p>Vår community är vänlig och hjälpsam, med en stark känsla av samhörighet. Vi har aktiva spelare som alltid är redo att spela.</p>
             </div>
             <div class="box">
-                <img src="https://via.placeholder.com/60" alt="Icon 3" class="box-icon">
-                <h3>Spännande Aktiviteter</h3>
-                <p>Med ständigt uppdaterade events och aktiviteter håller vi serven levande. Delta i tävlingar, jobb och äventyr för att hålla spelet spännande.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Apply Form Section -->
-    <section id="apply-form">
-        <h2>Ansök för att Bli en Del av Örebro Sweden RP</h2>
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="name">Fullständigt Namn</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Ålder</label>
-                <input type="number" id="age" name="age" required>
-            </div>
-            <div class="form-group">
-                <label for="experience">Erfarenhet av RP</label>
-                <textarea id="experience" name="experience" rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="why-join">Varför vill du joina Örebro Sweden RP?</label>
-                <textarea id="why-join" name="why-join" rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">Skicka Ansökan</button>
-            </div>
-        </form>
-    </section>
-
-    <!-- DMCA Badge -->
-    <div class="dmca-badge">
-        <a href="//www.dmca.com/Protection/Status.aspx?ID=045c7e23-6f36-486c-834d-1babb10f26e8" title="DMCA Protection Status">
-            <img src="https://images.dmca.com/Badges/DMCA_logo-bw200w.png" alt="DMCA Protection">
-        </a>
-    </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 Örebro Sweden Roleplay. Alla rättigheter förbehållna. <a href="#">Villkor</a></p>
-    </footer>
-
-</body>
-</html>
+                <img src="https://via.placeholder.com/60" alt
