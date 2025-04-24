@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* CSS Styles (Same as above, extended with animations and effects) */
-
+        /* CSS Styles for the webpage */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #1e1e1e;
@@ -82,7 +81,7 @@
             z-index: 2;
         }
 
-        /* Blixt-Effekt runt texten */
+        /* Lightning Effect around Header Text */
         @keyframes lightningAroundText {
             0% {
                 text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
@@ -272,18 +271,19 @@
 
             // Example of integrating server images dynamically
             let serverImages = [
-                'image1.jpg',
-                'image2.jpg',
-                'image3.jpg'
+                'https://via.placeholder.com/500x300',
+                'https://via.placeholder.com/500x300'
             ];
-
-            // Dynamically add server images to page
-            serverImages.forEach(function(image, index) {
-                let img = `<img src="server_images/${image}" class="camera-effect" alt="Server Image ${index + 1}" />`;
-                $('#join-reasons').append(img);
+            serverImages.forEach(imageUrl => {
+                let imgElement = $('<img>', {
+                    src: imageUrl,
+                    class: 'camera-effect',
+                    alt: 'Server Image',
+                    style: 'width: 100%; max-width: 1000px; margin-bottom: 20px;',
+                });
+                $('#join-reasons').append(imgElement);
             });
         });
     </script>
-
 </body>
 </html>
