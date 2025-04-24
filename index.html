@@ -6,29 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Örebro Sweden Roleplay</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* Reset styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* CSS Styles (Same as above, extended with animations and effects) */
 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #1e1e1e;
             color: white;
-            overflow-x: hidden;
             margin: 0;
+            padding: 0;
+            animation: fadeIn 1.5s ease-out;
         }
 
         h1, h2, h3 {
             color: #fff;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
         }
 
         /* Navbar */
@@ -89,13 +82,13 @@
             z-index: 2;
         }
 
-        /* Blixt-Outline Effekt */
-        @keyframes lightningOutline {
+        /* Blixt-Effekt runt texten */
+        @keyframes lightningAroundText {
             0% {
                 text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
             }
             50% {
-                text-shadow: 0 0 20px blue, 0 0 40px blue, 0 0 60px blue;
+                text-shadow: 0 0 30px blue, 0 0 40px blue, 0 0 60px blue;
             }
             100% {
                 text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
@@ -103,7 +96,7 @@
         }
 
         header h1 {
-            animation: lightningOutline 1s infinite alternate;
+            animation: lightningAroundText 1.5s infinite alternate;
         }
 
         /* Join Reasons Section */
@@ -143,22 +136,6 @@
             background-color: #333;
         }
 
-        .box:hover .neon-effect {
-            animation: neonEffect 2s infinite alternate;
-        }
-
-        .neon-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            border: 3px solid #ff007f;
-            opacity: 0.3;
-            animation: neonEffect 2s infinite alternate;
-        }
-
         .box-icon {
             width: 60px;
             height: 60px;
@@ -174,17 +151,6 @@
         .box p {
             font-size: 1rem;
             color: #ccc;
-        }
-
-        @keyframes neonEffect {
-            0% {
-                opacity: 0.5;
-                box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
-            }
-            100% {
-                opacity: 1;
-                box-shadow: 0 0 15px #ff007f, 0 0 25px #ff007f, 0 0 35px #ff007f;
-            }
         }
 
         /* DMCA Badge in Bottom Left Corner */
@@ -229,15 +195,15 @@
             background-color: #5b6eae;
         }
 
-        /* Cursor Effect */
-        .cursor {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff007f;
-            border-radius: 50%;
-            pointer-events: none;
-            transition: all 0.2s ease;
+        /* Camera Effect for Server Images */
+        .camera-effect {
+            filter: sepia(50%) contrast(150%) brightness(90%);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .camera-effect:hover {
+            transform: scale(1.05);
         }
 
     </style>
@@ -265,20 +231,17 @@
         <h2>Varför Joina Örebro Sweden Roleplay?</h2>
         <div class="box-container">
             <div class="box">
-                <div class="neon-effect"></div>
-                <img src="https://image.shutterstock.com/image-vector/real-estate-building-icon-housing-logo-260nw-1823131953.jpg" alt="Icon 1" class="box-icon">
+                <img src="https://via.placeholder.com/60" alt="Icon 1" class="box-icon">
                 <h3>Realistiskt Rollspel</h3>
                 <p>Upplev svensk stadsmiljö med realistiska karaktärer och interaktioner. Bygg din egen historia i ett välkomnande samhälle.</p>
             </div>
             <div class="box">
-                <div class="neon-effect"></div>
-                <img src="https://image.shutterstock.com/image-vector/community-icon-modern-flat-vector-260nw-1724798207.jpg" alt="Icon 2" class="box-icon">
+                <img src="https://via.placeholder.com/60" alt="Icon 2" class="box-icon">
                 <h3>Stark Gemenskap</h3>
                 <p>Vår community är vänlig och hjälpsam, med en stark känsla av samhörighet. Vi har aktiva spelare som alltid är redo att spela.</p>
             </div>
             <div class="box">
-                <div class="neon-effect"></div>
-                <img src="https://image.shutterstock.com/image-vector/gaming-controller-vector-illustration-icon-260nw-1620856005.jpg" alt="Icon 3" class="box-icon">
+                <img src="https://via.placeholder.com/60" alt="Icon 3" class="box-icon">
                 <h3>Spännande Aktiviteter</h3>
                 <p>Med ständigt uppdaterade events och aktiviteter håller vi serven levande. Delta i tävlingar, jobb och äventyr för att hålla spelet spännande.</p>
             </div>
@@ -295,16 +258,30 @@
         <p>Örebro Sweden Roleplay - DMCA Protected | <a href="#">Villkor</a> | <a href="#">Discord</a></p>
     </footer>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-
+    <!-- JavaScript -->
     <script>
-        // Custom cursor effect
-        const cursor = document.getElementById("cursor");
+        // Simple smooth scroll effect for navigation
+        $(document).ready(function () {
+            $('a[href^="#"]').on('click', function (e) {
+                e.preventDefault();
+                var target = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top
+                }, 800);
+            });
 
-        document.addEventListener("mousemove", (e) => {
-            cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
-            cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+            // Example of integrating server images dynamically
+            let serverImages = [
+                'image1.jpg',
+                'image2.jpg',
+                'image3.jpg'
+            ];
+
+            // Dynamically add server images to page
+            serverImages.forEach(function(image, index) {
+                let img = `<img src="server_images/${image}" class="camera-effect" alt="Server Image ${index + 1}" />`;
+                $('#join-reasons').append(img);
+            });
         });
     </script>
 
