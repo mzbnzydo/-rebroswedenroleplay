@@ -221,6 +221,17 @@
             background-color: #5b6eae;
         }
 
+        /* Cursor Effect */
+        .cursor {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff007f;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -275,6 +286,19 @@
     <footer>
         <p>Örebro Sweden Roleplay - DMCA Protected | <a href="#">Villkor</a> | <a href="#">Discord</a></p>
     </footer>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Custom cursor effect
+        const cursor = document.getElementById("cursor");
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
+            cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
+        });
+    </script>
 
 </body>
 </html>
