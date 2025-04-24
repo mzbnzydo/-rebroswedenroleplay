@@ -85,17 +85,25 @@
             letter-spacing: 5px;
             color: #fff;
             animation: fadeIn 2s ease-out;
+            position: relative;
+            z-index: 2;
         }
 
-        @keyframes fadeIn {
+        /* Blixt-Outline Effekt */
+        @keyframes lightningOutline {
             0% {
-                opacity: 0;
-                transform: translateY(-50px);
+                text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
+            }
+            50% {
+                text-shadow: 0 0 20px blue, 0 0 40px blue, 0 0 60px blue;
             }
             100% {
-                opacity: 1;
-                transform: translateY(0);
+                text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue;
             }
+        }
+
+        header h1 {
+            animation: lightningOutline 1s infinite alternate;
         }
 
         /* Join Reasons Section */
@@ -258,21 +266,21 @@
         <div class="box-container">
             <div class="box">
                 <div class="neon-effect"></div>
-                <img src="https://via.placeholder.com/60" alt="Icon 1" class="box-icon">
-                <h3>Realistiskt Spelande</h3>
-                <p>Upplev autentiskt svensk rollspel där varje detalj räknas och där du kan vara med och skapa din egen historia.</p>
+                <img src="https://image.shutterstock.com/image-vector/real-estate-building-icon-housing-logo-260nw-1823131953.jpg" alt="Icon 1" class="box-icon">
+                <h3>Realistiskt Rollspel</h3>
+                <p>Upplev svensk stadsmiljö med realistiska karaktärer och interaktioner. Bygg din egen historia i ett välkomnande samhälle.</p>
             </div>
             <div class="box">
                 <div class="neon-effect"></div>
-                <img src="https://via.placeholder.com/60" alt="Icon 2" class="box-icon">
-                <h3>Vänlig Gemenskap</h3>
-                <p>Bli en del av en vänlig och hjälpsam community som alltid är redo att ta emot nya spelare.</p>
+                <img src="https://image.shutterstock.com/image-vector/community-icon-modern-flat-vector-260nw-1724798207.jpg" alt="Icon 2" class="box-icon">
+                <h3>Stark Gemenskap</h3>
+                <p>Vår community är vänlig och hjälpsam, med en stark känsla av samhörighet. Vi har aktiva spelare som alltid är redo att spela.</p>
             </div>
             <div class="box">
                 <div class="neon-effect"></div>
-                <img src="https://via.placeholder.com/60" alt="Icon 3" class="box-icon">
+                <img src="https://image.shutterstock.com/image-vector/gaming-controller-vector-illustration-icon-260nw-1620856005.jpg" alt="Icon 3" class="box-icon">
                 <h3>Spännande Aktiviteter</h3>
-                <p>Delta i roliga events, utmaningar och spelmoment som ständigt håller servern levande och engagerande.</p>
+                <p>Med ständigt uppdaterade events och aktiviteter håller vi serven levande. Delta i tävlingar, jobb och äventyr för att hålla spelet spännande.</p>
             </div>
         </div>
     </section>
