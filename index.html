@@ -7,17 +7,23 @@
     <title>Örebro Sweden Roleplay</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body {
+        /* Reset styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #1e1e1e;
+            color: white;
+            overflow-x: hidden;
+            margin: 0;
         }
 
         h1, h2, h3 {
-            color: #333;
+            color: #fff;
         }
 
         a {
@@ -25,36 +31,83 @@
             color: inherit;
         }
 
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav .logo {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50px;
+        }
+
+        nav .menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            padding-right: 20px;
+            align-items: center;
+        }
+
+        nav .menu a {
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav .menu a:hover {
+            background-color: #ff007f;
+            border-radius: 5px;
+        }
+
         /* Header Section */
         header {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 40px 0;
+            padding: 100px 20px;
             text-align: center;
+            background-color: #000;
+            position: relative;
+            z-index: 2;
         }
 
         header h1 {
-            font-size: 3rem;
-            margin: 0;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #fff;
+            animation: fadeIn 2s ease-out;
         }
 
-        /* DMCA Badge in Bottom Left Corner */
-        .dmca-badge {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Join Reasons Section */
         #join-reasons {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
         #join-reasons h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
+            color: #ff007f;
         }
 
         .box-container {
@@ -65,66 +118,123 @@
         }
 
         .box {
-            background-color: white;
-            border: 2px solid #ddd;
+            background-color: #222;
             border-radius: 10px;
             width: 280px;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #333;
+        }
+
+        .box:hover .neon-effect {
+            animation: neonEffect 2s infinite alternate;
+        }
+
+        .neon-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border: 3px solid #ff007f;
+            opacity: 0.3;
+            animation: neonEffect 2s infinite alternate;
         }
 
         .box-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             margin-bottom: 20px;
         }
 
         .box h3 {
-            font-size: 1.6rem;
-            color: #333;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
         }
 
         .box p {
             font-size: 1rem;
-            color: #666;
+            color: #ccc;
         }
 
-        @media (max-width: 768px) {
-            .box-container {
-                flex-direction: column;
-                align-items: center;
+        @keyframes neonEffect {
+            0% {
+                opacity: 0.5;
+                box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
             }
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 15px #ff007f, 0 0 25px #ff007f, 0 0 35px #ff007f;
+            }
+        }
 
-            .box {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 20px;
-            }
+        /* DMCA Badge in Bottom Left Corner */
+        .dmca-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
         }
 
         /* Footer Section */
         footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 20px 0;
+            background-color: #000;
+            color: white;
+            padding: 20px;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         footer p {
             margin: 0;
             font-size: 1rem;
         }
+
+        footer a {
+            color: #ff007f;
+            text-decoration: none;
+        }
+
+        /* Discord Button */
+        .discord-btn {
+            background-color: #7289da;
+            padding: 15px 30px;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .discord-btn:hover {
+            background-color: #5b6eae;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
+        <div class="menu">
+            <a href="#">Hem</a>
+            <a href="#join-reasons">Varför Joina?</a>
+            <a href="#">Villkor</a>
+            <a href="https://discord.gg/YOUR_DISCORD_LINK" class="discord-btn">Gå med på Discord</a>
+        </div>
+    </nav>
 
     <!-- Header Section -->
     <header>
@@ -136,17 +246,20 @@
         <h2>Varför Joina Örebro Sweden Roleplay?</h2>
         <div class="box-container">
             <div class="box">
-                <img src="https://via.placeholder.com/50" alt="Icon 1" class="box-icon">
+                <div class="neon-effect"></div>
+                <img src="https://via.placeholder.com/60" alt="Icon 1" class="box-icon">
                 <h3>Realistiskt Spelande</h3>
                 <p>Upplev autentiskt svensk rollspel där varje detalj räknas och där du kan vara med och skapa din egen historia.</p>
             </div>
             <div class="box">
-                <img src="https://via.placeholder.com/50" alt="Icon 2" class="box-icon">
+                <div class="neon-effect"></div>
+                <img src="https://via.placeholder.com/60" alt="Icon 2" class="box-icon">
                 <h3>Vänlig Gemenskap</h3>
                 <p>Bli en del av en vänlig och hjälpsam community som alltid är redo att ta emot nya spelare.</p>
             </div>
             <div class="box">
-                <img src="https://via.placeholder.com/50" alt="Icon 3" class="box-icon">
+                <div class="neon-effect"></div>
+                <img src="https://via.placeholder.com/60" alt="Icon 3" class="box-icon">
                 <h3>Spännande Aktiviteter</h3>
                 <p>Delta i roliga events, utmaningar och spelmoment som ständigt håller servern levande och engagerande.</p>
             </div>
