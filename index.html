@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* CSS Styles for the webpage */
+        /* Global Styles */
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1e1e1e;
-            color: white;
+            background-color: #fff;
+            color: #333;
             margin: 0;
             padding: 0;
             animation: fadeIn 1.5s ease-out;
         }
 
         h1, h2, h3 {
-            color: #fff;
+            color: #000;
         }
 
         /* Navbar */
@@ -58,7 +58,7 @@
         }
 
         nav .menu a:hover {
-            background-color: #ff007f;
+            background-color: #007bff;
             border-radius: 5px;
         }
 
@@ -107,7 +107,7 @@
         #join-reasons h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #ff007f;
+            color: #007bff;
         }
 
         .box-container {
@@ -152,7 +152,62 @@
             color: #ccc;
         }
 
-        /* DMCA Badge in Bottom Left Corner */
+        /* Contact/Apply Form Section */
+        #apply-form {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+
+        #apply-form h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        /* DMCA Badge */
         .dmca-badge {
             position: fixed;
             bottom: 20px;
@@ -176,7 +231,7 @@
         }
 
         footer a {
-            color: #ff007f;
+            color: #007bff;
             text-decoration: none;
         }
 
@@ -194,17 +249,6 @@
             background-color: #5b6eae;
         }
 
-        /* Camera Effect for Server Images */
-        .camera-effect {
-            filter: sepia(50%) contrast(150%) brightness(90%);
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .camera-effect:hover {
-            transform: scale(1.05);
-        }
-
     </style>
 </head>
 <body>
@@ -215,6 +259,7 @@
         <div class="menu">
             <a href="#">Hem</a>
             <a href="#join-reasons">Varför Joina?</a>
+            <a href="#apply-form">Ansök här</a>
             <a href="#">Villkor</a>
             <a href="https://discord.gg/YOUR_DISCORD_LINK" class="discord-btn">Gå med på Discord</a>
         </div>
@@ -247,43 +292,43 @@
         </div>
     </section>
 
-    <!-- DMCA Badge Section -->
-    <a href="//www.dmca.com/Protection/Status.aspx?ID=045c7e23-6f36-486c-834d-1babb10f26e8" title="DMCA.com Protection Status" class="dmca-badge">
-        <img src="https://images.dmca.com/Badges/DMCA_logo-bw200w.png?ID=045c7e23-6f36-486c-834d-1babb10f26e8" alt="DMCA.com Protection Status">
-    </a>
+    <!-- Apply Form Section -->
+    <section id="apply-form">
+        <h2>Ansök för att Bli en Del av Örebro Sweden RP</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Fullständigt Namn</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Ålder</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Erfarenhet av RP</label>
+                <textarea id="experience" name="experience" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="why-join">Varför vill du joina Örebro Sweden RP?</label>
+                <textarea id="why-join" name="why-join" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Skicka Ansökan</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- DMCA Badge -->
+    <div class="dmca-badge">
+        <a href="//www.dmca.com/Protection/Status.aspx?ID=045c7e23-6f36-486c-834d-1babb10f26e8" title="DMCA Protection Status">
+            <img src="https://images.dmca.com/Badges/DMCA_logo-bw200w.png" alt="DMCA Protection">
+        </a>
+    </div>
 
     <!-- Footer Section -->
     <footer>
-        <p>Örebro Sweden Roleplay - DMCA Protected | <a href="#">Villkor</a> | <a href="#">Discord</a></p>
+        <p>&copy; 2025 Örebro Sweden Roleplay. Alla rättigheter förbehållna. <a href="#">Villkor</a></p>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Simple smooth scroll effect for navigation
-        $(document).ready(function () {
-            $('a[href^="#"]').on('click', function (e) {
-                e.preventDefault();
-                var target = this.hash;
-                $('html, body').animate({
-                    scrollTop: $(target).offset().top
-                }, 800);
-            });
-
-            // Example of integrating server images dynamically
-            let serverImages = [
-                'https://via.placeholder.com/500x300',
-                'https://via.placeholder.com/500x300'
-            ];
-            serverImages.forEach(imageUrl => {
-                let imgElement = $('<img>', {
-                    src: imageUrl,
-                    class: 'camera-effect',
-                    alt: 'Server Image',
-                    style: 'width: 100%; max-width: 1000px; margin-bottom: 20px;',
-                });
-                $('#join-reasons').append(imgElement);
-            });
-        });
-    </script>
 </body>
 </html>
